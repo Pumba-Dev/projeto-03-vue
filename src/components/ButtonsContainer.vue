@@ -3,8 +3,8 @@
     <ButtonBox
       v-for="(color, index) in colors"
       :key="index"
-      :buttonColor="color"
-      @ButtonBoxHasClicked="onButtonBoxHasClicked($event)"
+      :buttonBoxColor="color"
+      @ButtonBoxHasClicked="setSelectedButtonBox($event)"
     />
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    onButtonBoxHasClicked(ButtonBoxColor) {
+    setSelectedButtonBox(ButtonBoxColor) {
       // console.log(ButtonBoxColor);
       this.$emit("ButtonBoxHasClicked", ButtonBoxColor);
     },

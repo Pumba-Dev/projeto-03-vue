@@ -1,24 +1,24 @@
 <template>
   <div
     class="btn"
-    :style="{ 'background-color': buttonColor }"
+    :style="{ 'background-color': buttonBoxColor }"
     @click="setSelectedButtonBox()"
   >
-    Show Component {{ buttonColor.toUpperCase() }}
+    Show Component {{ buttonBoxColor.toUpperCase() }}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    buttonColor: {
+    buttonBoxColor: {
       type: String,
       default: "purple",
     },
   },
   methods: {
     setSelectedButtonBox() {
-      this.$emit("ButtonBoxHasClicked", this.buttonColor);
+      this.$emit("ButtonBoxHasClicked", this.buttonBoxColor);
     },
   },
 };

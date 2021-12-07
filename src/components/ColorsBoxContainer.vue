@@ -1,5 +1,5 @@
 <template>
-  <div class="btns-container">
+  <div class="color-box-container">
     <ColorBox v-for="(color, index) in colors" :key="index" :color="color" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-.btns-container {
+.color-box-container {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

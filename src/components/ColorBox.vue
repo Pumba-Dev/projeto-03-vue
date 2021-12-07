@@ -23,7 +23,7 @@ export default {
   color: white;
 }
 
-.unique {
+.is-unique {
   box-sizing: border-box;
   gap: 10px;
   margin-top: 50px;

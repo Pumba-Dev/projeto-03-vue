@@ -1,11 +1,13 @@
 <template>
   <div class="view-p">
     <div class="main-container">
-      <ButtonsContainer @ButtonBoxHasClicked="onButtonBoxHasClicked($event)" />
+      <ButtonsContainer
+        @ButtonBoxHasClicked="setSelectedButtonBoxColor($event)"
+      />
       <component
-        :is="currentUseColorBox"
-        :color="selectedButtonBox"
-        :class="['unique']"
+        :is="ButtonBoxColorHasSelected"
+        :color="selectedButtonBoxColor"
+        :class="['is-unique']"
       />
     </div>
   </div>
@@ -17,20 +19,26 @@ import ColorsBoxContainer from "./components/ColorsBoxContainer.vue";
 import ColorBox from "@/components/ColorBox.vue";
 export default {
   components: {
-    ColorsBoxContainer,
     ButtonsContainer,
+    ColorsBoxContainer,
   },
   data() {
     return {
-      selectedButtonBox: "",
-      currentUseColorBox: "ColorsBoxContainer",
+      selectedButtonBoxColor: "",
+      InitialColorBox: "ColorsBoxContainer",
     };
   },
+  computed: {
+    ButtonBoxColorHasSelected() {
+      return this.selectedButtonBoxColor == ""
+        ? this.InitialColorBox
+        : ColorBox;
+    },
+  },
   methods: {
-    onButtonBoxHasClicked(ButtonBoxColor) {
-      console.log(ButtonBoxColor);
-      this.selectedButtonBox = ButtonBoxColor;
-      this.currentUseColorBox = ColorBox;
+    setSelectedButtonBoxColor(ButtonBoxColor) {
+      // console.log(ButtonBoxColor);
+      this.selectedButtonBoxColor = ButtonBoxColor;
     },
   },
 };
