@@ -1,5 +1,5 @@
 export default [
     'red',
     'green',
-    'orange'
+    'blue',
 ]
