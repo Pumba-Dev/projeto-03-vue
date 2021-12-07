@@ -21,6 +21,7 @@ export default {
   padding: 25px;
   font-size: 1.5rem;
   color: white;
+  user-select: none;
 }
 
 .is-unique {
