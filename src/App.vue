@@ -1,28 +1,52 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="view-p">
+    <div class="main-container">
+      <ButtonsContainer @ButtonBoxHasClicked="onButtonBoxHasClicked($event)" />
+      <component
+        :is="currentUseColorBox"
+        :color="selectedButtonBox"
+        :class="['unique']"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ButtonsContainer from "@/components/ButtonsContainer.vue";
+import ColorsBoxContainer from "./components/ColorsBoxContainer.vue";
+import ColorBox from "@/components/ColorBox.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ColorsBoxContainer,
+    ButtonsContainer,
+  },
+  data() {
+    return {
+      selectedButtonBox: "",
+      currentUseColorBox: "ColorsBoxContainer",
+    };
+  },
+  methods: {
+    onButtonBoxHasClicked(ButtonBoxColor) {
+      console.log(ButtonBoxColor);
+      this.selectedButtonBox = ButtonBoxColor;
+      this.currentUseColorBox = ColorBox;
+    },
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.view-p {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  font-family: "Montserrat";
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
